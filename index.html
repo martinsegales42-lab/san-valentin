@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        h1 { color: #d63384; margin-bottom: 20px; }
+        
+        .gif-container { margin-bottom: 20px; }
+        
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #si { background-color: #ff4d6d; color: white; }
+        
+        #no { 
+            background-color: #adb5bd; 
+            color: white;
+            position: absolute;
+            left: 170px;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-card">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eHptZ3RscXh4bHozbm5xdW96bnR6bnR6bnR6bnR6bnR6bnR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZ29mJmN0PWc/c76IJLufpNwSULPk2m/giphy.gif" alt="Cute bear" width="200">
+        </div>
+        <h1 id="pregunta">¿Quieres ser mi San Valentín este 14 de febrero? ❤️</h1>
+        
+        <div class="btn-container">
+            <button id="si">¡SÍ!</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <div id="mensaje-final" class="hidden container">
+        <h1>¡SABÍA QUE DIRÍAS QUE SÍ! 😍</h1>
+        <p>Prometo que será un día increíble. ¡Te amo!</p>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3R6bnR6bnR6bnR6bnR6bnR6bnR6bnR6bnR6bnR6bnR6bnR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZ29mJmN0PWc/KztT2c4u8mYYUiMKdJ/giphy.gif" width="200">
+    </div>
+
+    <script>
+        const btnNo = document.getElementById('no');
+        const btnSi = document.getElementById('si');
+        const cardPrincipal = document.getElementById('main-card');
+        const mensajeFinal = document.getElementById('mensaje-final');
+
+        // Función para mover el botón "No"
+        btnNo.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = x + 'px';
+            btnNo.style.top = y + 'px';
+        });
+
+        // Al hacer clic en "Sí"
+        btnSi.addEventListener('click', () => {
+            cardPrincipal.classList.add('hidden');
+            mensajeFinal.classList.remove('hidden');
+            document.body.style.backgroundColor = '#ff4d6d';
+        });
+    </script>
+</body>
+</html>
